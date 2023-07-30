@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small Business Administration</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    <div class="header">
+        <div class="Logo">
+            <a href="index.html"><img src="https://www.familydocs.org/wp-content/uploads/2020/04/SBA-logo-color.png" alt=""></a>
+        </div>
+        <div class="buttons">
+            <!-- <div class="boton">
+                <button>Espa;ol</button>
+            </div> -->
+            <p><b>Account Number: 7657463 </b></p>
+            <p style="display: inline-block;"><b>Balance Available: <p style="display: inline-block; color: green;">&nbsp; $55,000.00 </b></p></p>
+        </div>
+    </div>
+    <hr>
+    <div class="menu">
+        <ul class="nav nav-underline">
+            <li class="nav-item ">
+              <a class="nav-link active" href="#">Withrawl Form</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#">Funding Programs</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#">Federal Contrating</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#">Learning Platform</a>
+            </li>
+          </ul>
+    </div>
+    <hr>
+    <div class="confetti"></div>
+    <div class="data">
+        <div class="head">
+            <h2 style="display: inline-block;">Hello, <p id="Nombre" style="display: inline-block;"></p></h2>
+            <p id="fecha-actual"></p>
+        </div>
+        <div class="head2">
+            <h2>Congratulations!!</h2>
+        </div>
+        <div class="text">
+            <div><h5>Congratulations, your funds are being processed, we are working as quickly as possible so that your funds arrive quickly and safely in your account.
+            </h5></div>
+            <h5 style="display: inline-block;">Your withdrawal was received and accepted , on its way to your account ending in&nbsp;
+            <p style="display: inline-block;" id="cardnumber"> </p> You will receive an email with the most updated information within 10 to 30 minutes. Congratulations!</h5>
+        </div>
+    </div>
+
+    <script>
+        const Nombre = document.querySelector('#Nombre');
+        const Numero = document.querySelector('#cardnumber');
+        const nombre = localStorage.getItem('nombre');
+        const numero = localStorage.getItem('numero');
+        Nombre.textContent = nombre; 
+        Numero.textContent = `   xxxxxxxxx${numero}.`;
+        const meses = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const dias = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+const fechaActual = new Date();
+
+const diaSemana = dias[fechaActual.getDay()];
+const diaMes = fechaActual.getDate();
+const mes = meses[fechaActual.getMonth()];
+const año = fechaActual.getFullYear();
+
+const sufijoDia = obtenerSufijoDia(diaMes);
+
+const fechaTexto = `Today is ${diaSemana}, ${mes} ${diaMes}${sufijoDia}, ${año}.`;
+
+document.getElementById("fecha-actual").textContent = fechaTexto;
+
+function obtenerSufijoDia(dia) {
+  if (dia > 3 && dia < 21) return "th";
+  switch (dia % 10) {
+    case 1:  return "st";
+    case 2:  return "nd";
+    case 3:  return "rd";
+    default: return "th";
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const confettiContainer = document.querySelector('.confetti-container');
+  const numConfetti = 100; // Number of confetti elements to create
+
+  for (let i = 0; i < numConfetti; i++) {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.left = `${Math.random() * 100}%`;
+    confetti.style.animationDelay = `${Math.random() * 3}s`;
+    confettiContainer.appendChild(confetti);
+  }
+});
+
+
+
+    </script>
+</body>
+</html>
